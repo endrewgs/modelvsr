@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSR Produtos Naturais | Castanhas & Delivery em Curitiba</title>
+    <meta name="description" content="Catálogo online de castanhas e produtos naturais com delivery nos bairros nobres de Curitiba. Produtos frescos direto na sua porta.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nature: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        earth: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'scale-in': 'scaleIn 0.5s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease-out;
+        }
+        
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased relative">
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="backdrop-blur-md bg-white/80 border-b border-slate-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <a href="#" class="flex items-center gap-1.5">
+                        <span class="text-xl md:text-2xl font-bold text-nature-700 tracking-tight">VSR</span>
+                        <span class="text-lg md:text-xl font-medium text-slate-700 tracking-tight">- Produtos Naturais</span>
+                    </a>
+                    
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="#inicio" class="text-slate-600 hover:text-nature-600 transition-colors font-medium">Início</a>
+                        <a href="#produtos" class="text-slate-600 hover:text-nature-600 transition-colors font-medium">Produtos</a>
+                        <a href="#diferenciais" class="text-slate-600 hover:text-nature-600 transition-colors font-medium">Diferenciais</a>
+                        <a href="#entrega" class="text-slate-600 hover:text-nature-600 transition-colors font-medium">Entrega</a>
+                    </nav>
+                    
+                    <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" 
+                       class="hidden md:flex items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white px-5 py-2.5 rounded-full transition-all duration-300 font-medium shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 hover:-translate-y-0.5">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        <span>Fazer Pedido</span>
+                    </a>
+                    
+                    <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-nature-600 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden backdrop-blur-lg bg-white/95 border-b border-slate-200">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#inicio" class="block py-2 text-slate-600 hover:text-nature-600 font-medium">Início</a>
+                <a href="#produtos" class="block py-2 text-slate-600 hover:text-nature-600 font-medium">Produtos</a>
+                <a href="#diferenciais" class="block py-2 text-slate-600 hover:text-nature-600 font-medium">Diferenciais</a>
+                <a href="#entrega" class="block py-2 text-slate-600 hover:text-nature-600 font-medium">Entrega</a>
+                <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center gap-2 bg-nature-600 text-white px-5 py-3 rounded-full font-medium mt-4">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>Fazer Pedido</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+                 alt="Castanhas e nozes background" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/40"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+            <div class="max-w-3xl">
+                <div class="reveal-scale inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                    <i data-lucide="leaf" class="w-4 h-4 text-nature-400"></i>
+                    <span class="text-white/90 text-sm font-medium">100% Natural & Saudável</span>
+                </div>
+                
+                <h1 class="reveal text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    Saúde e Praticidade
+                    <span class="block text-nature-400">na Sua Porta</span>
+                </h1>
+                
+                <p class="reveal-left text-lg md:text-xl text-white/80 mb-4 max-w-2xl">
+                    Castanhas, nozes e produtos naturais selecionados com entrega segura nos bairros nobres de Curitiba.
+                </p>
+                <p class="reveal-left text-white/60 mb-10 flex items-center gap-2" style="transition-delay: 100ms;">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-earth-400"></i>
+                    Entrega em Água Verde, Batel, Juvevê, Cabral e região
+                </p>
+                
+                <div class="reveal-scale flex flex-col sm:flex-row gap-4" style="transition-delay: 200ms;">
+                    <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-3 bg-nature-600 hover:bg-nature-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-xl shadow-nature-600/40 hover:shadow-nature-600/60 hover:-translate-y-1">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        Pedir pelo WhatsApp
+                    </a>
+                    <a href="#produtos" 
+                       class="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:-translate-y-1">
+                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                        Ver Catálogo
+                    </a>
+                </div>
+                
+                <div class="reveal grid grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/20" style="transition-delay: 300ms;">
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white">100%</div>
+                        <div class="text-white/60 text-sm mt-1">Natural</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white">Segura</div>
+                        <div class="text-white/60 text-sm mt-1">Entrega Rápida</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-white">5★</div>
+                        <div class="text-white/60 text-sm mt-1">Avaliação</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#produtos" class="block p-4 text-white/50 hover:text-white transition-colors cursor-pointer" aria-label="Rolar para produtos">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="produtos" class="py-20 md:py-32 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="reveal-scale inline-flex items-center gap-2 bg-nature-100 text-nature-700 rounded-full px-4 py-2 mb-4">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold">Catálogo Premium</span>
+                </div>
+                <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
+                    Nossos Produtos
+                    <span class="text-nature-600">Especiais</span>
+                </h2>
+                <p class="reveal-left text-slate-600 text-lg">
+                    Selecionamos os melhores produtos naturais para sua saúde e bem-estar. Todos embalados com cuidado e prontos para entrega.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2">
+                    <div class="relative h-56 overflow-hidden bg-slate-100">
+                        <img src="img/castanha-caju.jpg" 
+                             alt="Castanha de Caju" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            MAIS VENDIDO
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Castanha de Caju</h3>
+                        <p class="text-slate-500 text-sm mb-4">Torrada, super crocante e rica em gorduras boas. Embalagem de 500g.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-sm line-through">R$ 89,90</span>
+                                <div class="text-2xl font-bold text-nature-600">R$ 74,90</div>
+                            </div>
+                            <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir a Castanha de Caju" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium">Pedir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2" style="transition-delay: 100ms;">
+                    <div class="relative h-56 overflow-hidden bg-slate-100">
+                        <img src="img/nozes.jpg" 
+                             alt="Nozes" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Nozes Especiais</h3>
+                        <p class="text-slate-500 text-sm mb-4">Fonte de antioxidantes e vitaminas. Embalagem de 300g.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-sm line-through">R$ 69,90</span>
+                                <div class="text-2xl font-bold text-nature-600">R$ 54,90</div>
+                            </div>
+                            <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir Nozes Especiais" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium">Pedir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2" style="transition-delay: 200ms;">
+                    <div class="relative h-56 overflow-hidden bg-slate-100">
+                        <img src="img/pistache.jpg" 
+                             alt="Pistache" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-earth-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            NOVO
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Pistache Premium</h3>
+                        <p class="text-slate-500 text-sm mb-4">Torradas e salgadas na medida certa. Embalagem de 250g.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-sm line-through">R$ 79,90</span>
+                                <div class="text-2xl font-bold text-nature-600">R$ 64,90</div>
+                            </div>
+                            <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir Pistache Premium" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium">Pedir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2" style="transition-delay: 300ms;">
+                    <div class="relative h-56 overflow-hidden bg-slate-100">
+                        <img src="img/mix-castanhas.jpg" 
+                             alt="Mix de Castanhas" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                            COMBO
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mix Premium</h3>
+                        <p class="text-slate-500 text-sm mb-4">Combinação especial de 5 castanhas. Embalagem de 400g.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-slate-400 text-sm line-through">R$ 99,90</span>
+                                <div class="text-2xl font-bold text-nature-600">R$ 79,90</div>
+                            </div>
+                            <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir Mix Premium" target="_blank" rel="noopener noreferrer" 
+                               class="flex items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white px-4 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                <span class="text-sm font-medium">Pedir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reveal text-center mt-12">
+                <a href="https://wa.me/5541995111482?text=Olá! Gostaria de ver o catálogo completo" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-3 bg-earth-600 hover:bg-earth-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg shadow-earth-600/30 hover:shadow-earth-600/50 hover:-translate-y-1">
+                    <i data-lucide="list" class="w-5 h-5"></i>
+                    Falar com um Atendente
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="diferenciais" class="py-20 md:py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-nature-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-earth-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="reveal-scale inline-flex items-center gap-2 bg-nature-100 text-nature-700 rounded-full px-4 py-2 mb-4">
+                    <i data-lucide="award" class="w-4 h-4"></i>
+                    <span class="text-sm font-semibold">Por que escolher VSR?</span>
+                </div>
+                <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
+                    Nossos
+                    <span class="text-nature-600">Diferenciais</span>
+                </h2>
+                <p class="reveal-left text-slate-600 text-lg">
+                    Comprometimento com a qualidade e sua satisfação em cada detalhe do nosso serviço.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="reveal-scale group p-8 rounded-3xl bg-slate-50 hover:bg-nature-50 transition-all duration-500 border border-slate-100 hover:border-nature-200">
+                    <div class="w-16 h-16 bg-nature-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-nature-600/30">
+                        <i data-lucide="leaf" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Produtos Frescos</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Selecionamos apenas os melhores produtos, com rigoroso controle de qualidade e validade garantida. Frescor que você sente no sabor.
+                    </p>
+                </div>
+                
+                <div class="reveal-scale group p-8 rounded-3xl bg-slate-50 hover:bg-nature-50 transition-all duration-500 border border-slate-100 hover:border-nature-200" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 bg-nature-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-nature-600/30">
+                        <i data-lucide="truck" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Envio Seguro</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Entrega rápida e segura nos bairros nobres de Curitiba. Entregador próprio para garantir que seu pedido chegue intacto.
+                    </p>
+                </div>
+                
+                <div class="reveal-scale group p-8 rounded-3xl bg-slate-50 hover:bg-nature-50 transition-all duration-500 border border-slate-100 hover:border-nature-200" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 bg-nature-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-nature-600/30">
+                        <i data-lucide="heart-pulse" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">Saúde na Sua Porta</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Produtos nutritivos entregues com praticidade. Cuide da sua alimentação sem sair de casa, com a qualidade que você merece.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+                <div class="flex items-center gap-3 p-4 rounded-xl bg-nature-50 border border-nature-100">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-nature-600 flex-shrink-0"></i>
+                    <span class="text-slate-700 font-medium text-sm">Produtos Selecionados</span>
+                </div>
+                <div class="flex items-center gap-3 p-4 rounded-xl bg-nature-50 border border-nature-100">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-nature-600 flex-shrink-0"></i>
+                    <span class="text-slate-700 font-medium text-sm">Embalagem Premium</span>
+                </div>
+                <div class="flex items-center gap-3 p-4 rounded-xl bg-nature-50 border border-nature-100">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-nature-600 flex-shrink-0"></i>
+                    <span class="text-slate-700 font-medium text-sm">Atendimento 7/7</span>
+                </div>
+                <div class="flex items-center gap-3 p-4 rounded-xl bg-nature-50 border border-nature-100">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-nature-600 flex-shrink-0"></i>
+                    <span class="text-slate-700 font-medium text-sm">Pagamento na Entrega</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entrega" class="py-20 md:py-32 bg-gradient-to-br from-nature-50 to-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div>
+                    <div class="reveal-scale inline-flex items-center gap-2 bg-nature-100 text-nature-700 rounded-full px-4 py-2 mb-4">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span class="text-sm font-semibold">Área de Cobertura</span>
+                    </div>
+                    <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+                        Entregamos nos
+                        <span class="text-nature-600">Melhores Bairros</span>
+                        de Curitiba
+                    </h2>
+                    <p class="reveal-left text-slate-600 text-lg mb-8">
+                        Atendemos exclusivamente regiões nobres da cidade, garantindo entregas rápidas e seguras para você aproveitar nossos produtos no conforto da sua casa.
+                    </p>
+                    
+                    <div class="reveal grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Água Verde</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Bacacheri</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Batel</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Alto da Glória</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Juvevê</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Cabral</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Jardim Botânico</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Jardim Social</span>
+                        </div>
+                        <div class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm border border-slate-100">
+                            <i data-lucide="check" class="w-4 h-4 text-nature-600"></i>
+                            <span class="text-slate-700 font-medium text-sm">Jardim das Américas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal mt-8">
+                        <a href="https://wa.me/5541995111482?text=Olá! Gostaria de confirmar se entregam no meu bairro" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 text-nature-600 hover:text-nature-700 font-semibold transition-colors">
+                            <span>Não encontrou seu bairro? Consulte-nos</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="reveal-right relative">
+                    <div class="relative">
+                        <img src="https://images.pexels.com/photos/4393426/pexels-photo-4393426.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                             alt="Entrega de produtos naturais" 
+                             class="rounded-3xl shadow-2xl shadow-nature-600/20 w-full h-96 md:h-[500px] object-cover">
+                        
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 animate-float hidden md:block">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-nature-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="shield-check" class="w-6 h-6 text-nature-600"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-slate-800">100%</div>
+                                    <div class="text-slate-500 text-sm font-medium">Entrega Segura</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -top-4 -right-4 bg-nature-600 text-white px-4 py-2 rounded-full font-bold shadow-lg hidden md:block">
+                            <i data-lucide="star" class="w-4 h-4 inline mr-1"></i>
+                            5.0
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32 bg-nature-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <div class="absolute top-10 left-10 w-32 h-32 border-4 border-white rounded-full"></div>
+            <div class="absolute bottom-20 right-20 w-48 h-48 border-4 border-white rounded-full"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 border-4 border-white rounded-full"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="reveal text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                Pronto para começar a cuidar da sua saúde?
+            </h2>
+            <p class="reveal-left text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+                Entre em contato agora pelo WhatsApp e receba seus produtos naturais com entrega segura na sua casa.
+            </p>
+            <div class="reveal-scale flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center justify-center gap-3 bg-white text-nature-600 px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    Fazer Pedido Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <span class="text-3xl font-bold text-white tracking-tight">VSR</span>
+                        <span class="text-slate-400 font-medium">Produtos Naturais</span>
+                    </a>
+                    <p class="text-slate-400 mb-6 max-w-md">
+                        Seu catálogo online de castanhas e produtos naturais com entrega segura em Curitiba. Qualidade e frescor na sua porta.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" 
+                           class="w-10 h-10 bg-slate-800 hover:bg-nature-600 rounded-full flex items-center justify-center transition-colors" title="WhatsApp">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                        <a href="mailto:felipehen3riquelopesx90@gmail.com" class="w-10 h-10 bg-slate-800 hover:bg-nature-600 rounded-full flex items-center justify-center transition-colors" title="E-mail">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="hover:text-nature-400 transition-colors">Início</a></li>
+                        <li><a href="#produtos" class="hover:text-nature-400 transition-colors">Produtos</a></li>
+                        <li><a href="#diferenciais" class="hover:text-nature-400 transition-colors">Diferenciais</a></li>
+                        <li><a href="#entrega" class="hover:text-nature-400 transition-colors">Área de Entrega</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Atendimento</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-nature-400 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <div class="text-white font-medium">Todos os dias</div>
+                                <div class="text-slate-400">Das 7h às 22h</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-nature-400 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <div class="text-white font-medium">WhatsApp</div>
+                                <a href="https://wa.me/5541995111482" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-nature-400 transition-colors">
+                                    (41) 99511-1482
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-nature-400 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <div class="text-white font-medium">Delivery Exclusivo</div>
+                                <div class="text-slate-400">Curitiba - PR</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-slate-500 text-sm">
+                    © 2026 VSR Produtos Naturais. Todos os direitos reservados.
+                </p>
+                <p class="text-slate-500 text-sm">
+                    Design focado em conversão e experiência.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5541995111482?text=Olá,%20estou%20no%20site%20da%20VSR%20e%20gostaria%20de%20fazer%20um%20pedido." 
+       target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] hover:bg-[#20bd5a] rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all hover:scale-110 group animate-bounce"
+       aria-label="Fazer Pedido no WhatsApp">
+        <i data-lucide="message-circle" class="w-8 h-8 text-white relative z-10"></i>
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+    </a>
+
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+        
+        // Menu Mobile Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Fechar menu ao clicar em links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Intersection Observer para animações de scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observar elementos com classes de reveal
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // Smooth scroll para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
