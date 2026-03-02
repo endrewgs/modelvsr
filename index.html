@@ -7,7 +7,6 @@
     <meta name="description" content="Catálogo online de castanhas e produtos naturais com delivery nos bairros nobres de Curitiba. Produtos frescos direto na sua porta.">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
@@ -89,49 +88,14 @@
             width: 100%;
         }
         
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.6s ease-out;
-        }
-        
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s ease-out; }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(50px); transition: all 0.8s ease-out; }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.9); transition: all 0.6s ease-out; }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased relative">
@@ -257,7 +221,7 @@
                     <span class="text-nature-600">Especiais</span>
                 </h2>
                 <p class="reveal-left text-slate-600 text-lg">
-                    Selecione o tamanho ideal para você. Trabalhamos com pacotes fechados ou quantidades a granel combinadas sob medida.
+                    Selecione a quantidade ideal para você. Trabalhamos com pacotes fechados ou quantidades a granel.
                 </p>
             </div>
             
@@ -265,168 +229,218 @@
                 
                 <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2 flex flex-col">
                     <div class="relative h-48 overflow-hidden bg-slate-100 flex-shrink-0">
-                        <img src="img/castanha-caju.jpg" 
-                             alt="Castanha de Caju" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            MAIS VENDIDO
-                        </div>
+                        <img src="img/castanha-caju.jpg" alt="Castanha de Caju" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">MAIS VENDIDO</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-slate-800 mb-1">Castanha de Caju</h3>
-                        <p class="text-slate-500 text-xs mb-5">Torrada e crocante. Rica em gorduras boas.</p>
+                        <p class="text-slate-500 text-xs mb-4">Torrada, super crocante e rica em gorduras boas.</p>
                         
-                        <div class="bg-slate-50 p-4 rounded-xl mb-6 space-y-3 border border-slate-100 flex-grow">
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 100g</span>
-                                <span class="font-bold text-slate-800">R$ 25,00</span>
+                        <div class="flex-grow flex flex-col mt-2">
+                            <p class="text-[11px] font-bold text-slate-700 mb-2 uppercase tracking-wider">Escolha a quantidade:</p>
+                            <div class="bg-slate-50 p-2 rounded-xl mb-4 space-y-1 border border-slate-200">
+                                
+                                <div class="relative">
+                                    <input type="radio" name="size-caju" value="Pacote 100g" id="caju-100" class="peer hidden">
+                                    <label for="caju-100" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 100g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 25,00</span>
+                                    </label>
+                                </div>
+
+                                <div class="relative">
+                                    <input type="radio" name="size-caju" value="Pacote 150g" id="caju-150" class="peer hidden">
+                                    <label for="caju-150" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 150g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 35,00</span>
+                                    </label>
+                                </div>
+
+                                <div class="relative">
+                                    <input type="radio" name="size-caju" value="Pacote 250g" id="caju-250" class="peer hidden">
+                                    <label for="caju-250" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 250g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 50,00</span>
+                                    </label>
+                                </div>
+
+                                <div class="relative">
+                                    <input type="radio" name="size-caju" value="A granel" id="caju-granel" class="peer hidden">
+                                    <label for="caju-granel" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-bold text-nature-600 peer-checked:text-nature-700">A granel</span>
+                                        <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 150g</span>
-                                <span class="font-bold text-slate-800">R$ 35,00</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 250g</span>
-                                <span class="font-bold text-slate-800">R$ 50,00</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1">
-                                <span class="text-sm font-bold text-nature-600">A granel</span>
-                                <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
-                            </div>
+                            
+                            <p class="error-msg hidden text-red-500 text-xs font-bold mb-3 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3 h-3"></i> Selecione um tamanho acima.</p>
+                            
+                            <button type="button" data-product="Castanha de Caju" data-group="size-caju" 
+                               class="order-btn flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span class="font-semibold">Fazer Pedido</span>
+                            </button>
                         </div>
-                        
-                        <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir a Castanha de Caju. Quais opções de tamanho vocês têm?" target="_blank" rel="noopener noreferrer" 
-                           class="flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            <span class="font-semibold">Fazer Pedido</span>
-                        </a>
                     </div>
                 </div>
                 
                 <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2 flex flex-col" style="transition-delay: 100ms;">
                     <div class="relative h-48 overflow-hidden bg-slate-100 flex-shrink-0">
-                        <img src="img/nozes.jpg" 
-                             alt="Nozes" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <img src="img/nozes.jpg" alt="Nozes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-slate-800 mb-1">Nozes Especiais</h3>
-                        <p class="text-slate-500 text-xs mb-5">Fonte de antioxidantes e vitaminas.</p>
+                        <p class="text-slate-500 text-xs mb-4">Fonte de antioxidantes e vitaminas essenciais.</p>
                         
-                        <div class="bg-slate-50 p-4 rounded-xl mb-6 space-y-3 border border-slate-100 flex-grow">
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 100g</span>
-                                <span class="font-bold text-slate-800">R$ 25,00</span>
+                        <div class="flex-grow flex flex-col mt-2">
+                            <p class="text-[11px] font-bold text-slate-700 mb-2 uppercase tracking-wider">Escolha a quantidade:</p>
+                            <div class="bg-slate-50 p-2 rounded-xl mb-4 space-y-1 border border-slate-200">
+                                <div class="relative">
+                                    <input type="radio" name="size-nozes" value="Pacote 100g" id="nozes-100" class="peer hidden">
+                                    <label for="nozes-100" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 100g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 25,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-nozes" value="Pacote 150g" id="nozes-150" class="peer hidden">
+                                    <label for="nozes-150" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 150g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 35,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-nozes" value="Pacote 250g" id="nozes-250" class="peer hidden">
+                                    <label for="nozes-250" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 250g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 50,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-nozes" value="A granel" id="nozes-granel" class="peer hidden">
+                                    <label for="nozes-granel" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-bold text-nature-600 peer-checked:text-nature-700">A granel</span>
+                                        <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 150g</span>
-                                <span class="font-bold text-slate-800">R$ 35,00</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 250g</span>
-                                <span class="font-bold text-slate-800">R$ 50,00</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1">
-                                <span class="text-sm font-bold text-nature-600">A granel</span>
-                                <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
-                            </div>
+                            
+                            <p class="error-msg hidden text-red-500 text-xs font-bold mb-3 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3 h-3"></i> Selecione um tamanho acima.</p>
+                            
+                            <button type="button" data-product="Nozes Especiais" data-group="size-nozes" 
+                               class="order-btn flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span class="font-semibold">Fazer Pedido</span>
+                            </button>
                         </div>
-                        
-                        <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir Nozes Especiais. Quais opções de tamanho vocês têm?" target="_blank" rel="noopener noreferrer" 
-                           class="flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            <span class="font-semibold">Fazer Pedido</span>
-                        </a>
                     </div>
                 </div>
                 
                 <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2 flex flex-col" style="transition-delay: 200ms;">
                     <div class="relative h-48 overflow-hidden bg-slate-100 flex-shrink-0">
-                        <img src="img/pistache.jpg" 
-                             alt="Pistache" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-earth-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            PREMIUM
-                        </div>
+                        <img src="img/pistache.jpg" alt="Pistache" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-earth-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">PREMIUM</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-slate-800 mb-1">Pistache Premium</h3>
-                        <p class="text-slate-500 text-xs mb-5">Torrados e salgados na medida certa.</p>
+                        <p class="text-slate-500 text-xs mb-4">Torrados e salgados na medida certa.</p>
                         
-                        <div class="bg-slate-50 p-4 rounded-xl mb-6 space-y-3 border border-slate-100 flex-grow">
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 100g</span>
-                                <span class="font-bold text-slate-800">R$ 25,00</span>
+                        <div class="flex-grow flex flex-col mt-2">
+                            <p class="text-[11px] font-bold text-slate-700 mb-2 uppercase tracking-wider">Escolha a quantidade:</p>
+                            <div class="bg-slate-50 p-2 rounded-xl mb-4 space-y-1 border border-slate-200">
+                                <div class="relative">
+                                    <input type="radio" name="size-pistache" value="Pacote 100g" id="pistache-100" class="peer hidden">
+                                    <label for="pistache-100" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 100g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 25,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-pistache" value="Pacote 150g" id="pistache-150" class="peer hidden">
+                                    <label for="pistache-150" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 150g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 35,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-pistache" value="Pacote 250g" id="pistache-250" class="peer hidden">
+                                    <label for="pistache-250" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 250g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 50,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-pistache" value="A granel" id="pistache-granel" class="peer hidden">
+                                    <label for="pistache-granel" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-bold text-nature-600 peer-checked:text-nature-700">A granel</span>
+                                        <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 150g</span>
-                                <span class="font-bold text-slate-800">R$ 35,00</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 250g</span>
-                                <span class="font-bold text-slate-800">R$ 50,00</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1">
-                                <span class="text-sm font-bold text-nature-600">A granel</span>
-                                <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
-                            </div>
+                            
+                            <p class="error-msg hidden text-red-500 text-xs font-bold mb-3 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3 h-3"></i> Selecione um tamanho acima.</p>
+                            
+                            <button type="button" data-product="Pistache Premium" data-group="size-pistache" 
+                               class="order-btn flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span class="font-semibold">Fazer Pedido</span>
+                            </button>
                         </div>
-                        
-                        <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir Pistache Premium. Quais opções de tamanho vocês têm?" target="_blank" rel="noopener noreferrer" 
-                           class="flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            <span class="font-semibold">Fazer Pedido</span>
-                        </a>
                     </div>
                 </div>
                 
                 <div class="reveal-scale group bg-white rounded-2xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-nature-600/10 transition-all duration-500 hover:-translate-y-2 flex flex-col" style="transition-delay: 300ms;">
                     <div class="relative h-48 overflow-hidden bg-slate-100 flex-shrink-0">
-                        <img src="img/mix-castanhas.jpg" 
-                             alt="Mix de Castanhas" 
-                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            COMBO
-                        </div>
+                        <img src="img/mix-castanhas.jpg" alt="Mix de Castanhas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-nature-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">COMBO</div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-slate-800 mb-1">Mix Premium</h3>
-                        <p class="text-slate-500 text-xs mb-5">Combinação especial de castanhas.</p>
+                        <p class="text-slate-500 text-xs mb-4">A melhor combinação especial.</p>
                         
-                        <div class="bg-slate-50 p-4 rounded-xl mb-6 space-y-3 border border-slate-100 flex-grow">
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 100g</span>
-                                <span class="font-bold text-slate-800">R$ 25,00</span>
+                        <div class="flex-grow flex flex-col mt-2">
+                            <p class="text-[11px] font-bold text-slate-700 mb-2 uppercase tracking-wider">Escolha a quantidade:</p>
+                            <div class="bg-slate-50 p-2 rounded-xl mb-4 space-y-1 border border-slate-200">
+                                <div class="relative">
+                                    <input type="radio" name="size-mix" value="Pacote 100g" id="mix-100" class="peer hidden">
+                                    <label for="mix-100" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 100g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 25,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-mix" value="Pacote 150g" id="mix-150" class="peer hidden">
+                                    <label for="mix-150" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 150g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 35,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-mix" value="Pacote 250g" id="mix-250" class="peer hidden">
+                                    <label for="mix-250" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-medium text-slate-600 peer-checked:text-nature-700">Pacote 250g</span>
+                                        <span class="font-bold text-slate-800 peer-checked:text-nature-700">R$ 50,00</span>
+                                    </label>
+                                </div>
+                                <div class="relative">
+                                    <input type="radio" name="size-mix" value="A granel" id="mix-granel" class="peer hidden">
+                                    <label for="mix-granel" class="flex justify-between items-center p-2 rounded-lg cursor-pointer border border-transparent hover:bg-slate-200 peer-checked:border-nature-500 peer-checked:bg-nature-100 transition-all">
+                                        <span class="text-sm font-bold text-nature-600 peer-checked:text-nature-700">A granel</span>
+                                        <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 150g</span>
-                                <span class="font-bold text-slate-800">R$ 35,00</span>
-                            </div>
-                            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                                <span class="text-sm font-medium text-slate-600">Pacote 250g</span>
-                                <span class="font-bold text-slate-800">R$ 50,00</span>
-                            </div>
-                            <div class="flex justify-between items-center pt-1">
-                                <span class="text-sm font-bold text-nature-600">A granel</span>
-                                <span class="text-[10px] font-bold text-white bg-nature-600 px-2 py-1 rounded uppercase tracking-wider">Combinar</span>
-                            </div>
+                            
+                            <p class="error-msg hidden text-red-500 text-xs font-bold mb-3 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3 h-3"></i> Selecione um tamanho acima.</p>
+                            
+                            <button type="button" data-product="Mix Premium" data-group="size-mix" 
+                               class="order-btn flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
+                                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                                <span class="font-semibold">Fazer Pedido</span>
+                            </button>
                         </div>
-                        
-                        <a href="https://wa.me/5541995111482?text=Olá! Gostaria de pedir o Mix Premium. Quais opções de tamanho vocês têm?" target="_blank" rel="noopener noreferrer" 
-                           class="flex justify-center items-center gap-2 bg-nature-600 hover:bg-nature-700 text-white w-full px-4 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-nature-600/30 hover:shadow-nature-600/50 mt-auto">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            <span class="font-semibold">Fazer Pedido</span>
-                        </a>
                     </div>
                 </div>
-            </div>
-            
-            <div class="reveal text-center mt-12">
-                <a href="https://wa.me/5541995111482?text=Olá! Gostaria de encomendar produtos a granel, como funciona?" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center gap-3 bg-earth-600 hover:bg-earth-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg shadow-earth-600/30 hover:shadow-earth-600/50 hover:-translate-y-1">
-                    <i data-lucide="scale" class="w-5 h-5"></i>
-                    Combinar Pedido a Granel
-                </a>
             </div>
         </div>
     </section>
@@ -713,7 +727,6 @@
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Fechar menu ao clicar em links
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -722,27 +735,61 @@
         
         // Header scroll effect
         const header = document.getElementById('header');
-        let lastScroll = 0;
-        
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.pageYOffset > 100) {
                 header.classList.add('shadow-lg');
             } else {
                 header.classList.remove('shadow-lg');
             }
-            
-            lastScroll = currentScroll;
         });
         
+        // Lógica dos Botões de Pedido e Validação de Tamanho
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const product = btn.getAttribute('data-product');
+                const groupName = btn.getAttribute('data-group');
+                const card = btn.closest('.flex-grow'); 
+                const errorMsg = card.querySelector('.error-msg');
+                
+                // Pega a opção selecionada no card específico
+                const selectedOption = document.querySelector(`input[name="${groupName}"]:checked`);
+                
+                if (!selectedOption) {
+                    // Mostrar mensagem de erro se não selecionou
+                    errorMsg.classList.remove('hidden');
+                    
+                    // Efeito visual de tremor na caixa de opções
+                    const optionsBox = card.querySelector('.space-y-1');
+                    optionsBox.classList.add('animate-pulse');
+                    setTimeout(() => optionsBox.classList.remove('animate-pulse'), 500);
+                } else {
+                    // Esconder erro caso estivesse aparecendo
+                    errorMsg.classList.add('hidden');
+                    
+                    const size = selectedOption.value;
+                    const message = `Olá! Gostaria de pedir: ${product} (${size}).`;
+                    const whatsappUrl = `https://wa.me/5541995111482?text=${encodeURIComponent(message)}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                }
+            });
+        });
+
+        // Esconder o erro automaticamente assim que o cliente clica numa opção
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const card = e.target.closest('.flex-grow');
+                const errorMsg = card.querySelector('.error-msg');
+                if (errorMsg) {
+                    errorMsg.classList.add('hidden');
+                }
+            });
+        });
+
         // Intersection Observer para animações de scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -752,7 +799,6 @@
             });
         }, observerOptions);
         
-        // Observar elementos com classes de reveal
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
             revealObserver.observe(el);
         });
@@ -766,11 +812,7 @@
                     const headerOffset = 80;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 }
             });
         });
